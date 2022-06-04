@@ -46,7 +46,7 @@ async function run() {
       res.send(inventory);
       // console.log(id, query, inventory, inventoryCollection);
     });
-    //update quantity decrease by one or many ...
+    //update quantity decrease by one or or many ...
     app.put("/inventory/:id", async (req, res) => {
       const id = req.params.id;
 
