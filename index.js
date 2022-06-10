@@ -28,6 +28,7 @@ async function run() {
       .db("warehouseInventory")
       .collection("inventory");
       const itemCollection = client.db('warehouseInventory').collection('item');
+      const projectCollection = client.db('warehouseInventory').collection('project');
     
 
     //API
@@ -99,6 +100,23 @@ async function run() {
       const result = await itemCollection.deleteOne(query);
       res.send(result);
     })
+
+    //Projects
+    app.get("/project", async (req, res) => {
+      const query = {};
+      const cursor = projectCollection.find(query);
+      const projects = await cursor.toArray();
+      res.send(projects);
+    });
+
+    //loading by ID
+    app.get("/project/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const project = await projectCollection.findOne(query);
+      res.send(project);
+      // console.log(id, query, inventory, inventoryCollection);
+    });
 
 
   } finally {
