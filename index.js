@@ -126,6 +126,9 @@ run().catch(console.dir);
 app.get("/", (req, res) => {
   res.send("Warehouse Management serverd");
 });
+app.get("/whoa", (req, res) => {
+  res.send("whoa Management serverd");
+});
 
 app.listen(port, () => {
   console.log("Warehouse Management Server- ", port);
